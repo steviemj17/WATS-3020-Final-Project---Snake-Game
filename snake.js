@@ -8,9 +8,9 @@ function Snake() {
 
 
     this.draw = function () {
-        ctx.fillStyle = "#000080";
+        ctx.fillStyle = "#FF0000";
 
-        for (let i= 0; i<this.tail.length; i++) {
+        for (let i = 0; i < this.tail.length; i++) {
             ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
         }
 
@@ -71,5 +71,15 @@ function Snake() {
         }
 
         return false;
+    }
+
+    this.checkCollision = function () {
+        for (var i = 0; i < this.tail.length; i++) {
+            if (this.x === this.tail[i].x && 
+                this.y === this.tail[i].y) {
+                this.total = 0;
+                this.tail = [];
+            }
+        }
     }
 }
